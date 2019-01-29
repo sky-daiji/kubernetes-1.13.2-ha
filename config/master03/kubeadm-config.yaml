@@ -1,0 +1,33 @@
+apiVersion: kubeadm.k8s.io/v1beta1
+kind: ClusterConfiguration
+kubernetesVersion: v1.13.2
+apiServer:
+  certSANs:
+  - 172.16.40.245
+controlPlaneEndpoint: "172.16.40.245:16443"
+#etcd:
+#  local:
+#    extraArgs:
+#      listen-client-urls: "https://127.0.0.1:2379,https://172.16.40.243:2379"
+#      advertise-client-urls: "https://172.16.40.243:2379"
+#      listen-peer-urls: "https://172.16.40.243:2380"
+#      initial-advertise-peer-urls: "https://172.16.40.243:2380"
+#      initial-cluster: "master01=https://172.16.40.241:2380,master02=https://172.16.40.242:2380,master03=https://172.16.40.243:2380"
+#      initial-cluster-state: existing
+#    serverCertSANs:
+#      - master03
+#      - 172.16.40.243
+#    peerCertSANs:
+#      - master03
+#      - 172.16.40.243
+networking:
+  # This CIDR is a calico default. Substitute or remove for your CNI provider.
+  podSubnet: "10.245.0.0/16"
+---
+apiVersion: kubeproxy.config.k8s.io/v1alpha1
+kind: KubeProxyConfiguration
+ipvs:
+  minSyncPeriod: 1s
+  scheduler: rr
+  syncPeriod: 10s
+mode: ipvs

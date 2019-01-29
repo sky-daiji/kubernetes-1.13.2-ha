@@ -5,37 +5,37 @@
 #######################################
 
 # master keepalived virtual ip address
-export K8SHA_VIP=192.168.20.10
+export K8SHA_VIP=172.16.40.245
 
 # master01 ip address
-export K8SHA_IP1=192.168.20.20
+export K8SHA_IP1=172.16.40.241
 
 # master02 ip address
-export K8SHA_IP2=192.168.20.21
+export K8SHA_IP2=172.16.40.242
 
 # master03 ip address
-export K8SHA_IP3=192.168.20.22
+export K8SHA_IP3=172.16.40.243
 
 # master keepalived virtual ip hostname
 export K8SHA_VHOST=k8s-master-lb
 
 # master01 hostname
-export K8SHA_HOST1=k8s-master01
+export K8SHA_HOST1=master01
 
 # master02 hostname
-export K8SHA_HOST2=k8s-master02
+export K8SHA_HOST2=master02
 
 # master03 hostname
-export K8SHA_HOST3=k8s-master03
+export K8SHA_HOST3=master03
 
 # master01 network interface name
-export K8SHA_NETINF1=ens160
+export K8SHA_NETINF1=ens32
 
 # master02 network interface name
-export K8SHA_NETINF2=ens160
+export K8SHA_NETINF2=ens32
 
 # master03 network interface name
-export K8SHA_NETINF3=ens160
+export K8SHA_NETINF3=ens32
 
 # keepalived auth_pass config
 export K8SHA_KEEPALIVED_AUTH=412f7dc3bfed32194d1600c483e10ad1d
@@ -44,7 +44,7 @@ export K8SHA_KEEPALIVED_AUTH=412f7dc3bfed32194d1600c483e10ad1d
 export K8SHA_CALICO_REACHABLE_IP=192.168.0.1
 
 # kubernetes CIDR pod subnet, if CIDR pod subnet is "172.168.0.0/16" please set to "172.168.0.0"
-export K8SHA_CIDR=172.168.0.0
+export K8SHA_CIDR=10.245.0.0
 
 ##############################
 # please do not modify anything below
@@ -138,7 +138,6 @@ apiServer:
   certSANs:
   - ${K8SHA_VIP}
 controlPlaneEndpoint: "${K8SHA_VIP}:16443"
-imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers
 #etcd:
 #  local:
 #    extraArgs:
