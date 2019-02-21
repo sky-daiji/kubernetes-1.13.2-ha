@@ -20,6 +20,7 @@ logchange 0.5
 logdir /var/log/chrony
 EOF
 systemctl enable chronyd && systemctl restart chronyd
+wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 yum install -y wget vim net-tools conntrack ipvsadm ipset jq sysstat curl iptables libseccomp
 cat <<EOF > /etc/modules-load.d/ipvs.conf
 module=(
