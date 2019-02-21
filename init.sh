@@ -86,4 +86,5 @@ yum localinstall -y kernel-ml*
 find /lib/modules -name '*nf_conntrack_ipv4*' -type f
 grub2-set-default  0 && grub2-mkconfig -o /etc/grub2.cfg
 grubby --default-kernel
+grubby --args="user_namespace.enable=1" --update-kernel="$(grubby --default-kernel)"
 reboot
