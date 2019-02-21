@@ -21,7 +21,7 @@ logdir /var/log/chrony
 EOF
 systemctl enable chronyd && systemctl restart chronyd
 yum install -y wget vim net-tools conntrack ipvsadm ipset jq sysstat curl iptables libseccomp
-:> /etc/modules-load.d/ipvs.conf
+cat <<EOF > /etc/modules-load.d/ipvs.conf
 module=(
   ip_vs
   ip_vs_lc
@@ -37,6 +37,7 @@ module=(
   ip_vs_sed
   ip_vs_ftp
   )
+EOF
 for kernel_module in ${module[@]};do
     /sbin/modinfo -F filename $kernel_module |& grep -qv ERROR && echo $kernel_module >> /etc/modules-load.d/ipvs.conf || :
 done
@@ -77,7 +78,7 @@ EOF
 sysctl --system
 wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 yum install wget git  jq psmisc -y
-yum install https://mirrors.aliyun.com/saltstack/yum/redhat/salt-repo-latest-2.el7.noarch.rpm
+yum install -y https://mirrors.aliyun.com/saltstack/yum/redhat/salt-repo-latest-2.el7.noarch.rpm
 sed -i "s/repo.saltstack.com/mirrors.aliyun.com\/saltstack/g" /etc/yum.repos.d/salt-latest.repo
 yum update -y
 export Kernel_Vsersion=4.18.9-1
