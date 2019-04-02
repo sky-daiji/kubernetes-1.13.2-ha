@@ -4,7 +4,7 @@ setenforce 0
 sed -ri '/^[^#]*SELINUX=/s#=.+$#=disabled#' /etc/selinux/config
 swapoff -a
 sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
-yum install chrony -y
+yum install wget chrony -y
 cat <<EOF > /etc/chrony.conf
 server ntp.aliyun.com iburst
 stratumweight 0
