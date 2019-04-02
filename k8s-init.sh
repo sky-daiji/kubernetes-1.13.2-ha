@@ -32,7 +32,6 @@ ip_vs_lblc
 ip_vs_lblcr
 ip_vs_dh
 ip_vs_sh
-ip_vs_fo
 ip_vs_nq
 ip_vs_sed
 ip_vs_ftp
