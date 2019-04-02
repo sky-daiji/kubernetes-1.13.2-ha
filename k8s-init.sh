@@ -79,7 +79,7 @@ EOF
 sysctl --system
 wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 yum install wget git  jq psmisc -y
-yum install -y https://mirrors.aliyun.com/saltstack/yum/redhat/salt-repo-latest-2.el7.noarch.rpm
+yum install -y https://mirrors.aliyun.com/saltstack/yum/redhat/salt-repo-latest.el7.noarch.rpm
 sed -i "s/repo.saltstack.com/mirrors.aliyun.com\/saltstack/g" /etc/yum.repos.d/salt-latest.repo
 yum update -y
 export Kernel_Vsersion=4.18.9-1
