@@ -23,7 +23,6 @@ systemctl enable chronyd && systemctl restart chronyd
 wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 yum install -y wget vim net-tools conntrack ipvsadm ipset jq sysstat curl iptables libseccomp
 cat <<EOF > /etc/modules-load.d/ipvs.conf
-module=(
   ip_vs
   ip_vs_lc
   ip_vs_wlc
@@ -37,7 +36,6 @@ module=(
   ip_vs_nq
   ip_vs_sed
   ip_vs_ftp
-  )
 EOF
 for kernel_module in ${module[@]};do
     /sbin/modinfo -F filename $kernel_module |& grep -qv ERROR && echo $kernel_module >> /etc/modules-load.d/ipvs.conf || :
