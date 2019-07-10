@@ -13,5 +13,9 @@ cat <<EOF > /etc/sysconfig/kubelet
 KUBELET_EXTRA_ARGS="--cgroup-driver=systemd --pod-infra-container-image=registry.cn-hangzhou.aliyuncs.com/google_containers/pause:3.1"
 EOF
 systemctl enable kubelet && systemctl start kubelet
-kubeadm init --kubernetes-version=1.14.3 --ignore-preflight-errors=Swap --apiserver-advertise-address=172.16.80.80 --image-repository registry.cn-hangzhou.aliyuncs.com/google_containers --service-cidr=10.96.0.0/12 --pod-network-cidr=10.244.0.0/16
-
+kubeadm init --kubernetes-version=1.14.3 \
+--ignore-preflight-errors=Swap \
+--apiserver-advertise-address=172.16.80.80 \
+--image-repository registry.cn-hangzhou.aliyuncs.com/google_containers \
+--service-cidr=10.96.0.0/12 \
+--pod-network-cidr=10.244.0.0/16
