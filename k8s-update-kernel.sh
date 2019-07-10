@@ -24,7 +24,7 @@ wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 yum install wget git  jq psmisc -y
 yum update -y
 export Kernel_Vsersion=4.18.16-1
-wget http://mirror.rc.usf.edu/compute_lock/elrepo/kernel/el7/x86_64/RPMS/kernel-ml{,-devel}-${Kernel_Vsersion}.el7.elrepo.x86_64.rpm
+wget https://github.com/sky-daiji/salt-k8s-ha-v2/raw/master/apps/kernel-ml-4.18.16-1.el7.elrepo.x86_64.rpm
 yum localinstall -y kernel-ml*
 find /lib/modules -name '*nf_conntrack_ipv4*' -type f
 grub2-set-default  0 && grub2-mkconfig -o /etc/grub2.cfg
